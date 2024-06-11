@@ -10,8 +10,6 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var todos = []models.Todo{}
-
 func Route(app *fiber.App, collection *mongo.Collection) {
 
 	api := app.Group("/apis/v1")

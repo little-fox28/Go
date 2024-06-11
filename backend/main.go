@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
 	"github.com/little-fox28/React-Go/routes"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -16,6 +17,7 @@ import (
 var collection *mongo.Collection
 
 func main() {
+
 	// DB connection
 	err := godotenv.Load(".env")
 	if err != nil {
@@ -43,6 +45,7 @@ func main() {
 
 	// Server
 	app := fiber.New()
+	app.Use(cors.New())
 	PORT := os.Getenv("PORT")
 
 	if PORT == "" {
